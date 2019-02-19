@@ -68,4 +68,47 @@ It was a drak and stormy night`;
             const salary = 1_000_000;
         });
     });
+
+    describe('arrays and array literals', () => {
+        it('has them', () => {
+
+            //const stuff: (number|string)[] = [12,13];
+            const stuff: Array<string | number> = [12, 13];
+            stuff[2] = "hello";
+            expect(stuff[2]).toBe("hello");
+
+            let word = stuff[2];
+            // when typing "word." intellisense will only show common functions between the type union
+        });
+        // tuple is an array of types returned by a function
+        // tuple is a typed-array.  Says this array is going to have 2 elements, of certain data type
+        describe('tuples', () => {
+            it('a brief introduction using TS', () => {
+                let warren: [string, string, number, string];
+                warren = ['Warren', 'Ellis', 55, 'Musician'];
+
+                let occupation = warren[3];
+                let age = warren[2];
+
+            });
+            it('an example', () => {
+
+                function formatName(first: string, last: string): [string, number] {
+                    const fullName = `${last}, ${first}`;
+                    return [fullName, fullName.length];
+                }
+                const [fullName, len] = formatName('Han', 'Solo'); // destructuring
+                expect(fullName).toBe('Solo, Han');
+                expect(len).toBe(9);
+
+
+                const stuff = ['Jeff', 'Gonzalez', 49];
+                const [firstName, , age] = stuff;
+                expect(firstName).toBe('Jeff');
+                expect(age).toBe(49);
+            });
+
+        });
+
+    });
 });
